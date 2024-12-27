@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { CalendarIcon } from 'lucide-react';
 import Navbar from '../components/Navbar';
 
 const CreateGoals = () => {
@@ -91,14 +90,14 @@ const CreateGoals = () => {
                       onChange={(e) => setDate(e.target.value)}
                       className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
                     />
-                    <CalendarIcon className="absolute right-3 top-3 h-5 w-5 text-gray-400" />
+                    
                   </div>
                 </div>
               </div>
 
               <button 
                 type="submit"
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 px-6 rounded-lg transition-colors duration-200 font-medium text-lg shadow-md hover:shadow-lg"
+                className="w-full bg-zinc-900 hover:bg-zinc-700 text-white py-3 px-6 rounded-lg transition-colors duration-200 font-medium text-lg shadow-md hover:shadow-lg"
               >
                 Create Goal
               </button>

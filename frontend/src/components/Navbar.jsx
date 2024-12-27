@@ -8,7 +8,7 @@ const Navbar = () => {
     <nav className="w-full p-2 px-4 bg-gray-100 border-b-2 text-zinc-800">
       <div className="flex justify-between items-center">
         {/* Logo */}
-        <div className="text-2xl font-medium font-serif">StepCloser</div>
+        <div className="text-2xl font-medium font-serif"><Link to='/'>StepCloser</Link></div>
 
         {/* Hamburger Icon */}
         <button
@@ -26,9 +26,16 @@ const Navbar = () => {
           <Link to="/create" className="text-lg mx-2">
             StartOne
           </Link>
-          <button className="bg-zinc-900 rounded-full text-white p-2 px-3">
+          <Link 
+  to="/authenticate" 
+  className="bg-zinc-900 rounded-full text-white p-2 px-3"
+  onClick={() => {
+    console.log('Navigating to /authenticate');
+    setIsMenuOpen(false);
+  }}
+>
             SignIn/Up
-          </button>
+          </Link>
         </div>
       </div>
 
@@ -49,12 +56,14 @@ const Navbar = () => {
           >
             StartOne
           </Link>
-          <button
+          
+          <Link to='/authenticate'
             className="bg-zinc-900 rounded-full text-white p-2 px-3"
             onClick={() => setIsMenuOpen(false)}
-          >
+          > 
             SignIn/Up
-          </button>
+          </Link>
+        
         </div>
       )}
     </nav>

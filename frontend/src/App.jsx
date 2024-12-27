@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import CreateGoals from "./pages/CreateGoals";
 import Goals from "./pages/Goals";
+import Authentication from "./pages/Authentication";
 
 const App = () => {
   return (
@@ -12,6 +13,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/create" element={<CreateGoals />} />
           <Route path="/goals" element={<Goals />} />
+          <Route path="/authenticate" element={<Authentication />} />
         </Routes>
       </main>
     </Router>
