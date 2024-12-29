@@ -23,8 +23,8 @@ const Authentication = () => {
 
     try {
       const url = isSignUp
-        ? 'http://localhost:4000/createUser'
-        : 'http://localhost:4000/login';
+        ? 'https://step-closer-api.vercel.app/createUser'
+        : 'https://step-closer-api.vercel.app/login';
       const response = await axios.post(url, formData);
 
       if (response.data.token) {

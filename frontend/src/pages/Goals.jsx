@@ -9,7 +9,7 @@ const Goals = () => {
   useEffect(() => {
     const handleData = async () => {
       try {
-        const response = await fetch("http://localhost:4000/goals");
+        const response = await fetch("https://step-closer-api.vercel.app/goals");
         if (!response.ok) throw new Error("Failed to fetch goals");
         const data = await response.json();
         setGoals(data);

@@ -10,7 +10,7 @@ const MyGoals = () => {
   useEffect(() => {
     const fetchGoals = async () => {
       try {
-        const response = await fetch("http://localhost:4000/goals/myGoals", {
+        const response = await fetch("https://step-closer-api.vercel.app/goals/myGoals", {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
         });
         if (!response.ok) throw new Error("Failed to fetch goals");
@@ -36,7 +36,7 @@ const MyGoals = () => {
     };
 
     try {
-      const response = await fetch(`http://localhost:4000/goals/${goalId}`, {
+      const response = await fetch(`https://step-closer-api.vercel.app/goals/${goalId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

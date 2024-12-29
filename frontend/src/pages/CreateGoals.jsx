@@ -38,7 +38,7 @@ const CreateGoals = () => {
         return;
       }
 
-      const response = await fetch('http://localhost:4000/create', {
+      const response = await fetch('https://step-closer-api.vercel.app/create', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
