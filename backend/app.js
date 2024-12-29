@@ -13,9 +13,9 @@ dotenv.config();
 
 const app = express();
 app.use(cors({
-    origin: 'https://step-closer.vercel.app',
-    methods: ['GET', 'POST', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
+  origin: 'https://step-closer.vercel.app',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'mode'], // Add 'mode' here
 }));
 app.use(bodyParser.json());
 app.use(cookieParser());
