@@ -28,7 +28,6 @@ const Authentication = () => {
       const response = await axios.post(url, formData, {
   headers: {
     'Content-Type': 'application/json',
-    'mode': 'no-cors', // Add no-cors mode
   },
 });
 

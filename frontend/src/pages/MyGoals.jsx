@@ -8,22 +8,41 @@ const MyGoals = () => {
 
   // Fetch user's goals from the backend
   useEffect(() => {
-    const fetchGoals = async () => {
-      try {
-        const response = await fetch("https://cors-anywhere.herokuapp.com/https://step-closer-api.vercel.app/goals/myGoals", {
-  headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
-});
-        if (!response.ok) throw new Error("Failed to fetch goals");
-        const data = await response.json();
-        setGoals(data);
-      } catch (error) {
-        console.error("Error fetching goals:", error);
-      } finally {
-        setLoading(false);
+  const fetchGoals = async () => {
+    const token = localStorage.getItem("token");
+    console.log("Current token:", token); // Add this to debug
+    
+    if (!token) {
+      console.error("No token found");
+      setLoading(false);
+      return;
+    }
+
+    try {
+      const response = await fetch("https://step-closer-api.vercel.app/goals/myGoals", {
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      });
+      
+      if (!response.ok) {
+        const errorData = await response.json();
+        console.error("Server response:", errorData);
+        throw new Error(`Failed to fetch goals: ${response.status}`);
       }
-    };
-    fetchGoals();
-  }, []);
+      
+      const data = await response.json();
+      setGoals(data);
+    } catch (error) {
+      console.error("Error fetching goals:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+  fetchGoals();
+}, []);
 
   // Toggle completed status
   const handleToggleCompleted = async (goalId) => {

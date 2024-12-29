@@ -22,52 +22,57 @@ const CreateGoals = () => {
     }));
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError('');
+ const handleSubmit = async (e) => {
+  e.preventDefault();
+  setError('');
 
-    if (!formData.task || !formData.date || !formData.desc) {
-      setError('Please fill out all required fields.');
+  if (!formData.task || !formData.date || !formData.desc) {
+    setError('Please fill out all required fields.');
+    return;
+  }
+
+  try {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      navigate('/authenticate');
       return;
     }
 
-    try {
-      const token = localStorage.getItem('token');
-      if (!token) {
-        navigate('/authenticate');
-        return;
-      }
+    // Log the token to verify it exists and is formatted correctly
+    console.log('Token being sent:', token);
 
-      const response = await fetch('https://step-closer-api.vercel.app/create', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-    'Authorization': `Bearer ${token}`
-  },
-  body: JSON.stringify(formData),
-  mode: 'no-cors' // Add this line
-});
+    const response = await fetch('https://step-closer-api.vercel.app/create', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify(formData)
+      // Remove mode: 'no-cors'
+    });
 
+    // Log the response status
+    console.log('Response status:', response.status);
 
-      if (!response.ok) {
-        const data = await response.json();
-        throw new Error(data.message || 'Failed to create goal');
-      }
-
-      const result = await response.json();
-      console.log('Goal created:', result);
-      navigate('/goals');
-    } catch (err) {
-      console.error('Error:', err);
-      if (err.message.includes('Token is not valid')) {
-        localStorage.removeItem('token');
-        navigate('/authenticate');
-      } else {
-        setError(err.message || 'Failed to create goal. Please try again.');
-      }
+    if (!response.ok) {
+      const errorData = await response.json();
+      console.error('Error data:', errorData);
+      throw new Error(errorData.message || 'Failed to create goal');
     }
-  };
 
+    const result = await response.json();
+    console.log('Goal created:', result);
+    navigate('/goals');
+  } catch (err) {
+    console.error('Error details:', err);
+    if (err.message.includes('Token is not valid')) {
+      localStorage.removeItem('token');
+      navigate('/authenticate');
+    } else {
+      setError(err.message || 'Failed to create goal. Please try again.');
+    }
+  }
+};
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100">
       <Navbar />
