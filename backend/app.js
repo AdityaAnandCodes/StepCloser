@@ -34,7 +34,7 @@ const authenticate = (req, res, next) => {
 
 app.get("/",(req,res)=>{
   res.send("Hello");
-  res.send(200);
+  res.sendStatus(200);
 })
 // Route to get goals (public and user-specific goals)
 app.get("/goals", async (req, res) => {  // Remove authenticate middleware
