@@ -12,13 +12,7 @@ const User = require('./models/user');
 dotenv.config();
 
 const app = express();
-
-const corsOptions = {
-  origin: 'https://step-closer.vercel.app', // Allow your frontend's origin
-  credentials: true, // Allow credentials (cookies, etc.)
-};
-
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(bodyParser.json());
 app.use(cookieParser());
 
