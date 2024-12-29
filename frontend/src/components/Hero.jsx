@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Hero = () => {
   return (
     <section className="h-full w-full p-4 flex flex-col lg:flex-row justify-center items-center text-zinc-900">
@@ -11,7 +13,7 @@ const Hero = () => {
           Let’s build a community of goal-setters and achievers!
         </p>
         <button className="bg-zinc-900 text-white text-lg py-3 px-6 rounded-lg hover:bg-zinc-700 transition">
-          Get Started
+          <Link to="/goals">Get Started</Link>
         </button>
       </div>
 
