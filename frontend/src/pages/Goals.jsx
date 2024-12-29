@@ -39,9 +39,9 @@ const Goals = () => {
       <main className="container mx-auto px-4 py-12">
         <div className="max-w-4xl mx-auto">
           <div className="mb-12 text-center">
-            <h1 className="text-4xl font-bold text-gray-900 mb-4">Your Goals</h1>
+            <h1 className="text-4xl font-bold text-gray-900 mb-4">Get Inspired</h1>
             <div className="h-1 w-20 bg-blue-600 mx-auto mb-4"></div>
-            <p className="text-gray-600">Track and manage your goals</p>
+            <p className="text-gray-600">See what others strive for</p>
           </div>
 
           {goals.length > 0 ? (

@@ -6,6 +6,7 @@ const goalSchema = new mongoose.Schema({
     createdBy : {type : String , required : true},
     completed : {type : Boolean , default : false},
     desc : {type: String , required : true},
+    visibility : {type : Boolean , default : true}
 })
 
 module.exports = mongoose.model('Goal',goalSchema)
