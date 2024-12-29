@@ -13,8 +13,7 @@ const Goals = () => {
   method: 'GET',
   headers: {
     'Content-Type': 'application/json',
-  },
-  mode: 'no-cors' // Add this line to enable no-cors mode
+  }
 });
 
         if (!response.ok) throw new Error("Failed to fetch goals");
