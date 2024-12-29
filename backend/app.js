@@ -13,9 +13,9 @@ dotenv.config();
 
 const app = express();
 app.use(cors({
-  origin: 'https://step-closer.vercel.app',
+  origin: ['https://step-closer.vercel.app', 'http://localhost:5173'], // Add your Vite dev server
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'mode'], // Add 'mode' here
+  allowedHeaders: ['Content-Type', 'Authorization', 'mode'],
 }));
 app.use(bodyParser.json());
 app.use(cookieParser());

@@ -8,23 +8,22 @@ const Goals = () => {
 
   useEffect(() => {
     const handleData = async () => {
-      try {
-        const response = await fetch("https://step-closer-api.vercel.app/goals", {
-  method: 'GET',
-  headers: {
-    'Content-Type': 'application/json',
+  try {
+    const response = await fetch("https://step-closer-api.vercel.app/goals");
+    if (!response.ok) {
+      const errorData = await response.json();
+      console.error("Server error:", errorData);
+      throw new Error(`Failed to fetch goals: ${response.status}`);
+    }
+    const data = await response.json();
+    setGoals(data);
+  } catch (error) {
+    console.error("Error details:", error);
+    // Maybe set an error state here to show to the user
+  } finally {
+    setLoading(false);
   }
-});
-
-        if (!response.ok) throw new Error("Failed to fetch goals");
-        const data = await response.json();
-        setGoals(data);
-      } catch (error) {
-        console.error("Error fetching goals:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
+};
     handleData();
   }, []);
 
