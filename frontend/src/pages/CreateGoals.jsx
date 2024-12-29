@@ -39,13 +39,15 @@ const CreateGoals = () => {
       }
 
       const response = await fetch('https://step-closer-api.vercel.app/create', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
-        },
-        body: JSON.stringify(formData)
-      });
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${token}`
+  },
+  body: JSON.stringify(formData),
+  mode: 'no-cors' // Add this line
+});
+
 
       if (!response.ok) {
         const data = await response.json();

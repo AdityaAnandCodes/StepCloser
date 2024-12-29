@@ -9,7 +9,14 @@ const Goals = () => {
   useEffect(() => {
     const handleData = async () => {
       try {
-        const response = await fetch("https://step-closer-api.vercel.app/goals");
+        const response = await fetch("https://step-closer-api.vercel.app/goals", {
+  method: 'GET',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  mode: 'no-cors' // Add this line to enable no-cors mode
+});
+
         if (!response.ok) throw new Error("Failed to fetch goals");
         const data = await response.json();
         setGoals(data);

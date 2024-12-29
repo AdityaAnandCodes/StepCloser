@@ -10,9 +10,9 @@ const MyGoals = () => {
   useEffect(() => {
     const fetchGoals = async () => {
       try {
-        const response = await fetch("https://step-closer-api.vercel.app/goals/myGoals", {
-          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
-        });
+        const response = await fetch("https://cors-anywhere.herokuapp.com/https://step-closer-api.vercel.app/goals/myGoals", {
+  headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
+});
         if (!response.ok) throw new Error("Failed to fetch goals");
         const data = await response.json();
         setGoals(data);

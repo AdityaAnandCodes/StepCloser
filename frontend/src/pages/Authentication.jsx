@@ -25,7 +25,12 @@ const Authentication = () => {
       const url = isSignUp
         ? 'https://step-closer-api.vercel.app/createUser'
         : 'https://step-closer-api.vercel.app/login';
-      const response = await axios.post(url, formData);
+      const response = await axios.post(url, formData, {
+  headers: {
+    'Content-Type': 'application/json',
+    'mode': 'no-cors', // Add no-cors mode
+  },
+});
 
       if (response.data.token) {
         localStorage.setItem('token', response.data.token); // Save token to localStorage
