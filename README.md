@@ -79,7 +79,7 @@ The public goals page where users can view and draw inspiration from goals share
 
 ## License
 
-This project is licensed under the [Alpha2.0 License](LICENSE).
+This project is licensed under the [Apache2.0 License](LICENSE).
 
 ---
 
