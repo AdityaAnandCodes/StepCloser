@@ -13,7 +13,7 @@ dotenv.config();
 
 const app = express();
 app.use(cors({
-  origin: ['https://step-closer.vercel.app', 'http://localhost:5173'], // Add your Vite dev server
+  origin: ['https://step-closer.vercel.app', 'http://localhost:5173',"http://localhost:3000"], // Add your Vite dev server
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'mode'],
 }));
